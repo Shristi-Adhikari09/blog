@@ -1,25 +1,15 @@
-import { lazy } from 'react';
-import { Route, Routes } from 'react-router';
+
 import './App.css';
+import { appRoutes } from "./routes/approutes";
+import GenerateRoutes from './components/GenerateRoutes';
 
 
-const Home = lazy(() => import('./pages/Home'));
-const Blog = lazy(() => import ('./pages/Blog'));
-const BlogDetails = lazy(() => import('./pages/Blog/BlogDetails'));
-const UserBlog = lazy(() =>  import('./pages/UserBlog'));
-const Login = lazy(() => import('./pages/Login'));
 
 function App() {
   return (
-   <div className="bg-green-200 rounded-2xl ">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog-details/:blogName" element={<BlogDetails /> } />
-        <Route path="/user-blog" element={<UserBlog />}/>
-         <Route path="/login" element={<Login />}/>
-      </Routes>
-      </div>
+    <div className="bg-green-200  p-3 rounded-2xl ">
+      <GenerateRoutes routes={appRoutes} />
+    </div>
    );
 }
 
