@@ -1,0 +1,106 @@
+{
+    "blogs":[
+  {
+    "title": "Understanding Async/Await in JavaScript",
+    "summary": "A quick guide to mastering async/await syntax in JavaScript.",
+    "author": "Jane Doe",
+    "created_at": "2025-05-01T10:00:00Z",
+    "featured": true,
+    "tags": ["JavaScript", "Async", "Programming"],
+    "read_count": 1204,
+    "body": "<p>JavaScript's <strong>async/await</strong> syntax makes asynchronous code easier to read and maintain. In this article, we’ll explore how to use it effectively.</p>"
+  },
+  {
+    "title": "Top 5 CSS Frameworks in 2025",
+    "summary": "Discover the best CSS frameworks that are trending in 2025.",
+    "author": "John Smith",
+    "created_at": "2025-04-25T14:30:00Z",
+    "featured": false,
+    "tags": ["CSS", "Frameworks", "Web Design"],
+    "read_count": 934,
+    "body": "<p>If you're building modern UIs, you need a solid CSS foundation. Let’s compare the top <em>five</em> frameworks developers love in 2025.</p>"
+  },
+  {
+    "title": "A Beginner’s Guide to TypeScript",
+    "summary": "Learn TypeScript basics and how it enhances JavaScript development.",
+    "author": "Emily Johnson",
+    "created_at": "2025-03-10T09:15:00Z",
+    "featured": true,
+    "tags": ["TypeScript", "JavaScript", "Beginner"],
+    "read_count": 1540,
+    "body": "<p><strong>TypeScript</strong> adds static types to JavaScript, helping catch bugs early and improve development efficiency. Here’s how to get started.</p>"
+  },
+  {
+    "title": "Building Responsive Layouts with Flexbox",
+    "summary": "Master the art of flexible layouts using Flexbox in CSS.",
+    "author": "Michael Lee",
+    "created_at": "2025-02-20T11:00:00Z",
+    "featured": false,
+    "tags": ["CSS", "Flexbox", "Responsive"],
+    "read_count": 800,
+    "body": "<p>Using <code>display: flex</code> can simplify layout problems. This guide shows how Flexbox can make your layouts more adaptive and clean.</p>"
+  },
+  {
+    "title": "The Rise of Edge Computing",
+    "summary": "Explore how edge computing is transforming data processing.",
+    "author": "Sara Kim",
+    "created_at": "2025-04-01T08:45:00Z",
+    "featured": true,
+    "tags": ["Edge Computing", "Cloud", "Tech Trends"],
+    "read_count": 1123,
+    "body": "<p>Edge computing moves processing closer to the data source. <strong>Why is this important?</strong> Reduced latency and improved performance.</p>"
+  },
+  {
+    "title": "How to Write Unit Tests in Python",
+    "summary": "Step-by-step instructions for writing unit tests in Python using unittest.",
+    "author": "David Chen",
+    "created_at": "2025-01-15T16:10:00Z",
+    "featured": false,
+    "tags": ["Python", "Testing", "unittest"],
+    "read_count": 678,
+    "body": "<p>Testing your code ensures reliability. The <code>unittest</code> module in Python makes it easy to start writing tests for your functions and classes.</p>"
+  },
+  {
+    "title": "What’s New in React 19",
+    "summary": "An overview of the latest features introduced in React 19.",
+    "author": "Nina Patel",
+    "created_at": "2025-05-05T13:25:00Z",
+    "featured": true,
+    "tags": ["React", "JavaScript", "Frontend"],
+    "read_count": 1478,
+    "body": "<p>React 19 brings many updates including <strong>server components</strong>, faster refresh, and improved hooks. Here’s what you need to know.</p>"
+  },
+  {
+    "title": "Improving Web Accessibility",
+    "summary": "Tips to make your website more accessible to all users.",
+    "author": "Liam O’Connor",
+    "created_at": "2025-02-02T07:00:00Z",
+    "featured": false,
+    "tags": ["Accessibility", "Web Design", "A11y"],
+    "read_count": 523,
+    "body": "<p>Accessibility isn’t optional. Use semantic HTML, ARIA labels, and proper contrast ratios to create inclusive web experiences.</p>"
+  },
+  {
+    "title": "An Introduction to GraphQL",
+    "summary": "Learn how GraphQL is revolutionizing data queries.",
+    "author": "Olivia Garcia",
+    "created_at": "2025-03-18T12:00:00Z",
+    "featured": false,
+    "tags": ["GraphQL", "API", "Web Development"],
+    "read_count": 894,
+    "body": "<p><strong>GraphQL</strong> offers a powerful and flexible alternative to REST APIs. This article explains how it works and how to set it up.</p>"
+  },
+  {
+    "title": "Deploying with Docker: A Practical Guide",
+    "summary": "Learn how to containerize your applications using Docker.",
+    "author": "Carlos Martinez",
+    "created_at": "2025-04-12T15:30:00Z",
+    "featured": true,
+    "tags": ["Docker", "DevOps", "Containers"],
+    "read_count": 1322,
+    "body": "<p>Docker makes deployment simpler and more consistent. Learn how to write Dockerfiles, build images, and deploy containers in this step-by-step guide.</p>"
+  }
+]
+
+
+}
