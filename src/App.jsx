@@ -7,7 +7,7 @@ import GenerateRoutes from './components/GenerateRoutes';
 
 function App() {
   return (
-    <div className="bg-green-200  p-3 rounded-2xl ">
+    <div className=" w-screen h-screen  "  >
       <GenerateRoutes routes={appRoutes} />
     </div>
    );

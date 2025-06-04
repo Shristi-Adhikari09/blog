@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
 
-export default function GenerateRoutes({routes}){
+export default function GenerateRoutes({ routes }){
     return(
-        <Routes>
+    <Routes>
         {routes?.map(({ name , path , element: Element }) => (        
-          <Route  key={name} path={path} element={<Element />} />
-          ))}
-      </Routes>
+        <Route  key={name} path={path} element={<Element />} />
+        ))}
+    </Routes>
     );
 }
