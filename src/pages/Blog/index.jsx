@@ -39,6 +39,7 @@ console.log("🚀 ~ Home ~ blogs:", blogs);
         <BlogCard
         key={blog.title} 
         title={blog.title}
+       slug={blog.slug}
         summary={blog.summary}
        created_at={blog.created_at}
         author={blog.author}
