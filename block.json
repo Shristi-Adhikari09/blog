@@ -1,17 +1,19 @@
 {
-    "blogs":[
+"blogs":[
   {
-    "title": "Understanding Async/Await in JavaScript",
-    "summary": "A quick guide to mastering async/await syntax in JavaScript.",
-    "author": "Jane Doe",
-    "created_at": "2025-05-01T10:00:00Z",
-    "featured": true,
-    "tags": ["JavaScript", "Async", "Programming"],
-    "read_count": 1204,
-    "body": "<p>JavaScript's <strong>async/await</strong> syntax makes asynchronous code easier to read and maintain. In this article, we’ll explore how to use it effectively.</p>"
-  },
+  "title": "An Introduction to GraphQL",
+  "slug": "an-introduction-to-graphql",
+  "summary": "Learn how GraphQL is revolutionizing data queries.",
+  "author": "Olivia Garcia",
+  "created_at": "2025-03-18T12:00:00Z",
+  "featured": false,
+  "tags": ["GraphQL", "API", "Web Development"],
+  "read_count": 894,
+  "body": "<p><strong>GraphQL</strong> offers a powerful and flexible alternative to REST APIs. This article explains how it works and how to set it up.</p>"
+},
   {
     "title": "Top 5 CSS Frameworks in 2025",
+    "slug": "top-5-css-frameworks-in-2025",
     "summary": "Discover the best CSS frameworks that are trending in 2025.",
     "author": "John Smith",
     "created_at": "2025-04-25T14:30:00Z",
@@ -22,6 +24,7 @@
   },
   {
     "title": "A Beginner’s Guide to TypeScript",
+    "slug": "a-beginners-guide-to-typescript",
     "summary": "Learn TypeScript basics and how it enhances JavaScript development.",
     "author": "Emily Johnson",
     "created_at": "2025-03-10T09:15:00Z",
@@ -32,6 +35,7 @@
   },
   {
     "title": "Building Responsive Layouts with Flexbox",
+    "slug": "building-responsive-layouts-with-flexbox",
     "summary": "Master the art of flexible layouts using Flexbox in CSS.",
     "author": "Michael Lee",
     "created_at": "2025-02-20T11:00:00Z",
@@ -42,6 +46,7 @@
   },
   {
     "title": "The Rise of Edge Computing",
+    "slug": "the-rise-of-edge-computing",
     "summary": "Explore how edge computing is transforming data processing.",
     "author": "Sara Kim",
     "created_at": "2025-04-01T08:45:00Z",
@@ -52,6 +57,7 @@
   },
   {
     "title": "How to Write Unit Tests in Python",
+    "slug": "how-to-write-unit-tests-in-python",
     "summary": "Step-by-step instructions for writing unit tests in Python using unittest.",
     "author": "David Chen",
     "created_at": "2025-01-15T16:10:00Z",
@@ -62,6 +68,7 @@
   },
   {
     "title": "What’s New in React 19",
+    "slug": "whats-new-in-react-19",
     "summary": "An overview of the latest features introduced in React 19.",
     "author": "Nina Patel",
     "created_at": "2025-05-05T13:25:00Z",
@@ -72,6 +79,7 @@
   },
   {
     "title": "Improving Web Accessibility",
+    "slug": "improving-web-accessibility",
     "summary": "Tips to make your website more accessible to all users.",
     "author": "Liam O’Connor",
     "created_at": "2025-02-02T07:00:00Z",
@@ -82,6 +90,7 @@
   },
   {
     "title": "An Introduction to GraphQL",
+    "slug": "an-introduction-to-graphql",
     "summary": "Learn how GraphQL is revolutionizing data queries.",
     "author": "Olivia Garcia",
     "created_at": "2025-03-18T12:00:00Z",
@@ -92,6 +101,7 @@
   },
   {
     "title": "Deploying with Docker: A Practical Guide",
+    "slug": "deploying-with-docker-a-practical-guide",
     "summary": "Learn how to containerize your applications using Docker.",
     "author": "Carlos Martinez",
     "created_at": "2025-04-12T15:30:00Z",
@@ -101,6 +111,4 @@
     "body": "<p>Docker makes deployment simpler and more consistent. Learn how to write Dockerfiles, build images, and deploy containers in this step-by-step guide.</p>"
   }
 ]
-
-
 }
