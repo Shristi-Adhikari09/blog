@@ -1,9 +1,17 @@
 const express = require("express")
 const cors =require('cors')
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+const { generateAccessToken } = require("./src/utils");
+const blogsDb =require("./block.json");
+
+// get config vars
+dotenv.config();
+
 const app =express()
-const blogsDb =require("./block.json")
 
 app.use(cors())
+app.use(express.json())
 
 app.get("/ping", (req,res) => res.status(200).json({ "message": "hello" }))
 
@@ -42,6 +50,17 @@ app.put("/blogs/:blogId", (req, res) => {
    return res.status(200).json({ message: "Blog updated successfully." })
 })
 
+app.post('/login', (req,res) => {
+   const loginData = req.body;
+   console.log("🚀 ~ app.post ~ loginData:", loginData)
+   if (loginData.username=== "my_name" && loginData.password === "Test@123") 
+      {
+       const token = generateAccessToken({ username: req.body.username });
+       return res.status(200).json({"token": token })
+   }
+   return res.status(401).json({ message: "Credentials do not match" })
+})
+
 app.listen(3000, () => {
-    console.log("Listening to Port:3000")
+console.log("Listening to Port:3000")
 })
