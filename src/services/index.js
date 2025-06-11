@@ -23,20 +23,26 @@
     }
  }
  
-   export const login = async () => {
-    try{
-        const res = await fetch("http://localhost:3000/login")
-        const data = await res.json()
-         if (res.ok) {
-           return data;
-        }else{
-            throw new Error(data.message)
+  export const login = async (body) => {
+    try {
+        const res = await fetch("http://localhost:3000/login", {
+        body : JSON.stringify(body),
+        method: "POST",
+        headers:{"Content-Type": "application/json"}
+    })
+        const data = await res.json();
+
+        if (res.ok) {
+            return data;
+        } else {
+            throw new Error(data.message);
         }
+
     } catch (err) {
-    
-        throw  new Error(err);
+        throw new Error(err.message);  // safer error
     }
- }
+}
+
   export const logout = async () => {
     try{
         const res = await fetch("http://localhost:3000/logout")
