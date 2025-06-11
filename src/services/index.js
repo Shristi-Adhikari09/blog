@@ -23,7 +23,7 @@
     }
  }
  
-  export const login = async (body) => {
+  export const loginUser = async (body) => {
     try {
         const res = await fetch("http://localhost:3000/login", {
         body : JSON.stringify(body),

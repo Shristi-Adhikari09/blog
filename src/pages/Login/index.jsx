@@ -1,12 +1,15 @@
-import { useState } from "react";
-import { login } from "../../services";
+import { useContext, useState } from "react";
+import {  loginUser } from "../../services";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
-  
+  const{ login} = useContext(AuthContext);
+  //Two way binding
   const[loginData,setLoginData] = useState({username: null, password: null });
   const[loginError, setLoginError] =useState(null)
-   const navigate =useNavigate()
+   const navigate =useNavigate();
+
 
   const onSubmitHandler = async (e) =>{
     e.preventDefault();
@@ -14,7 +17,7 @@ export default function Login() {
     
 try {
    // Hit login api
-    const response = await login({
+    const response = await loginUser({
       username: loginData.username,
       password: loginData.password,
     });
@@ -23,6 +26,7 @@ try {
     // Save tokens in local storage
     localStorage.setItem("token",response.token);
     navigate('/create-blog');
+    login();
     setLoginError(null);
   
 } catch (error) {
