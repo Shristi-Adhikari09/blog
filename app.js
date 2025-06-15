@@ -16,10 +16,31 @@ app.use(express.json())
 app.get("/ping", (req,res) => res.status(200).json({ "message": "hello" }))
 
 // Add blog
-app.post('/blog', (req,res) => {
+app.post('/blog', (req,res,next) => {
+    //Check if the user is aunthenticated
+   //  const Authorization = req.headers.Authorization
+
+   const authHeader = req.headers['authorization']
+   console.log("🚀 ~ app.post ~ authHeader:", authHeader)
+
+
+   const token = authHeader && authHeader.split(' ')[1]
+
+   if (token == null) return res.sendStatus(401)
+
+   jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+    console.log(err)
+
+    if (err) return res.sendStatus(403)
+
+    req.user = user
+
+   
+})
     const body = req.body
     return res.status(201).json({ message: "Blog added succesfully." })
 })
+
 
 // Get all blogs
 app.get("/blog", (req, res) => {
@@ -52,10 +73,10 @@ app.put("/blogs/:blogId", (req, res) => {
 
 app.post('/login', (req,res) => {
    const loginData = req.body;
-   console.log("🚀 ~ app.post ~ loginData:", loginData)
+  
    if (loginData.username=== "my_name" && loginData.password === "Test@123") 
       {
-       const token = generateAccessToken({ username: req.body.username });
+       const token = generateAccessToken({ payload: req.body });
        return res.status(200).json({"token": token })
    }
    return res.status(401).json({ message: "Credentials do not match" })
