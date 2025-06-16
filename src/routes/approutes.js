@@ -15,6 +15,7 @@ export const appRoutes = [
     {name:"blog" ,path:"/blog", element:Blog},
     {name:"blog-details" ,path:"/blog-details/:blogName", element:BlogDetails },
     {name:"user-blog" ,path:"/user-blog", element:UserBlog },
-    {name:"create-blog" ,path:"/create-blog", element:CreateBlog, authenticated: true},
+    {name:"create-blog" ,path:"/blog/create", element:CreateBlog, authenticated: true},
+    {name:"edit-blog" ,path:"/blog/edit/:blogSlug", element:CreateBlog, authenticated: true},
     {name:"login" ,path:"/login", element:Login }
 ]

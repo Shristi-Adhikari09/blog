@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { postBlog } from "../../services";
-import { useNavigate } from "react-router";
+import { patchBlog, postBlog, retrieveBlog } from "../../services";
+import { useNavigate, useParams } from "react-router";
 
 const blogFields = [
   { name: "Title", id: "title", type: "input", inputType: "text" },
@@ -21,7 +21,22 @@ const blogFields = [
 export default function CreateBlog() {
   const { logout } = useContext(AuthContext);
   const [blogData, setBlogData] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const{ blogSlug } =useParams();
+ 
+ 
+  useEffect(() => {
+   if (!blogSlug) return;
+  (async() => {
+    try{
+        const { result } = await retrieveBlog(blogSlug)
+       
+       setBlogData(result)
+   } catch (err) {
+        console.log("Error retrieving blogs", err)
+   }
+  })();
+  },[blogSlug]);
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
@@ -30,20 +45,26 @@ export default function CreateBlog() {
 
   const handleBlogFormSubmit = async (e) => {
     e.preventDefault();
-   await postBlog(blogData);
-   navigate('/user-blog');
+    if (blogSlug) {
+     await patchBlog(blogSlug, blogData);
+   }else{
+    await postBlog(blogData);
+   }
+    navigate('/user-blog');
   };
 
   return (
     <div>
       <button
-        className="cursor-pointer px-2 py-1 bg-gray-200 rounded-lg"
+        className="cursor-pointer  m-2  px-2 py-1 bg-gray-200 rounded-lg"
         type="button"
         onClick={logoutHandler}
       >
         Logout
       </button>
-      <h2 className="text-2xl font-semibold">Add new blog</h2>
+      <h2 className="text-2xl font-semibold text-center">
+         {blogSlug? "Edit blog" : "Add new blog"}
+         </h2>
 
       <form
         onSubmit={handleBlogFormSubmit}
@@ -92,7 +113,9 @@ export default function CreateBlog() {
                       type="radio"
                       name={field.id}
                       value={option}
-                      checked={blogData[field.id] === option}
+                     checked={String(blogData[field.id]) === option}
+                    
+
                       onChange={(e) =>
                         setBlogData((prev) => ({
                           ...prev,
@@ -110,9 +133,9 @@ export default function CreateBlog() {
 
         <button
           type="submit"
-          className=" w-30  mx-auto mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className=" w-fit  mx-auto mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
         >
-          Submit Blog
+         {blogSlug ? 'Update':'Submit'}  Blog
         </button>
       </form>
     </div>
