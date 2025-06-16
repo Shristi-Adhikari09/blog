@@ -16,7 +16,7 @@ app.use(express.json())
 app.get("/ping", (req,res) => res.status(200).json({ "message": "hello" }))
 
 // Add blog
-app.post('/blog', (req,res,next) => {
+app.post('/blog', (req,res) => {
     //Check if the user is aunthenticated
    //  const Authorization = req.headers.Authorization
 
@@ -60,16 +60,31 @@ app.get("/blog/:blogSlug", (req, res) => {
 })
 
 // Delete blog
-app.delete("/blogs/:blogId", (req, res) => {
+app.delete("/blog/:blogId", (req, res) => {
    const { blogId } = req.params;
    return res.status(200).json({ message: "Blog deleted successfully." })
 })
 
 // Update blog
-app.put("/blogs/:blogId", (req, res) => {
-   const { blogId } = req.params;
-   return res.status(200).json({ message: "Blog updated successfully." })
-})
+app.put("/blog/:blogSlug", (req, res) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+
+    req.user = user;
+
+    const { blogId } = req.params;
+    console.log("🚀 ~ app.put ~ blogId:", blogId);
+
+    return res.status(200).json({ message: "Blog updated successfully.", result: req.body });
+  });
+});
+
+
 
 app.post('/login', (req,res) => {
    const loginData = req.body;
