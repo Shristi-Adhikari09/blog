@@ -47,10 +47,12 @@ export default function CreateBlog() {
     e.preventDefault();
     if (blogSlug) {
      await patchBlog(blogSlug, blogData);
+     
    }else{
     await postBlog(blogData);
-   }
     navigate('/user-blog');
+   }
+    
   };
 
   return (
@@ -136,6 +138,7 @@ export default function CreateBlog() {
           className=" w-fit  mx-auto mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
         >
          {blogSlug ? 'Update':'Submit'}  Blog
+        
         </button>
       </form>
     </div>

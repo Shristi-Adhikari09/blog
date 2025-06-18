@@ -6,6 +6,7 @@ export default function AuthContextProvider({ children}) {
   const[isLoggedIn, setIsLoggedIn] = useState(() => 
     localStorage.getItem('isLoggedIn') === 'true' ? true: false
 );
+console.log("🚀 ~ AuthContextProvider ~ isLoggedIn:", isLoggedIn)
 
 const login = () => {
       setIsLoggedIn(true);

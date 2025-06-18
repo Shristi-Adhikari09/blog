@@ -22,7 +22,7 @@ useEffect( () => {
 }, []);
 
 
-console.log("🚀 ~ Home ~ blogs:", blogs);
+
    return (
     <div>
    <div className="flex bg-green-200 p-4 items-center  flex-col gap-2 ">

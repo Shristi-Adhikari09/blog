@@ -48,7 +48,8 @@ export const postBlog = async (body) => {
       const res = await fetch("http://localhost:3000/blog", {
       body : JSON.stringify(body),
       method: "POST",
-      headers:{"Content-Type": "application/json",authorization: `Bearer ${localStorage.getItem('token')}` }
+      headers:{"Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem('token')}` }
   })
       const data = await res.json();
 
@@ -67,7 +68,8 @@ export const patchBlog = async (blogSlug,body) => {
       const res = await fetch(`http://localhost:3000/blog/${blogSlug}`, {
       body : JSON.stringify(body),
       method: "PUT",
-      headers:{"Content-Type": "application/json",authorization: `Bearer ${localStorage.getItem('token')}` }
+      headers:{"Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem('token')}` }
   })
       const data = await res.json();
 

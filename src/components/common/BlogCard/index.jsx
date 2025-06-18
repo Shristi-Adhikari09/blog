@@ -22,7 +22,7 @@ export default function BlogCard( {slug, title, summary, created_at,author}){
         navigate(`/blog/edit/${slug}`);
       }}
       >
-        <i className="material-symbols-outlined ">Edit</i>
+        <i className="material-symbols-outlined  bg-gray-100">edit</i>
       </button>
       </div> 
       ): null}

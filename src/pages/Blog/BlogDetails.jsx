@@ -7,7 +7,6 @@ import BlogDetailsSkeleton from "./BlogDetailsSkeleton";
 export default function BlogDetails() {
     const { blogName } =useParams();
     const[blog, setBlog] = useState();
-    console.log("🚀 ~ BlogDetails ~ blog:", blog)
     const[blogError, setBlogError] = useState(false);
     const[isBlogLoading, setIsBlogLoading] =useState(true);
     const navigate = useNavigate()
@@ -15,7 +14,7 @@ export default function BlogDetails() {
     useEffect( () => {
     (async () => {
         try {
-            const { result } = await retrieveBlog( blogName );
+            const { result } = await retrieveBlog(blogName);
              setBlog(result);
               setIsBlogLoading(false);
           
