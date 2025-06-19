@@ -84,21 +84,6 @@ export const patchBlog = async (blogSlug,body) => {
   }
 }
 
-export const logout = async () => {
-try{
-        const res = await fetch("http://localhost:3000/logout")
-        const data = await res.json()
-         if (res.ok) {
-           return data;
-        }else{
-            throw new Error(data.message)
-        }
-    } catch (err) {
-        
-        throw  new Error(err);
-    
-    }
- }
- 
+
 
  
