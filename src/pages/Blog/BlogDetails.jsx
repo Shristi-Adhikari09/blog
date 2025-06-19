@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { retrieveBlog } from "../../services";
+import {  retrieveBlog } from "../../services";
+import { fetchBlogs } from "../../store/slice/blog";
 import { useState } from "react";
 import BlogDetailsSkeleton from "./BlogDetailsSkeleton";
+
 
 export default function BlogDetails() {
     const { blogName } =useParams();
@@ -25,7 +27,10 @@ export default function BlogDetails() {
         }
      })();
     }, []);
- 
+
+     
+
+
     return (
     <div className=" flex flex-col lg:w-1/2 p-4 w-full mx-auto h-full mt-5 gap-2 " >
         <button className="flex items-center gap-2 hover:bg-gray-200 text-sm w-fit  p-2 rounded-lg cursor-pointer"

@@ -6,15 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 //   incrementByAmount,
 //   resetCount,
 // } from '../../store/slice/counterSlice';
-import { useState } from 'react';
-import { login, logout } from '../../store/slice/authSlice';
+// import { useState } from 'react';
+// import { login, logout } from '../../store/slice/authSlice';
 
 export default function Home() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const count = useSelector((state) => state.counter.value); 
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   // const [countValue, setCountValue] = useState(0);
 
   return (
@@ -74,10 +74,10 @@ export default function Home() {
         Decrement
       </button> */}
 
-      <h1>{isLoggedIn ? 'Welcome' : 'Please log in'}</h1>
+      {/* <h1>{isLoggedIn ? 'Welcome' : 'Please log in'}</h1>
 
       <button onClick={() => dispatch(login())}>Login</button>
-      <button onClick={() => dispatch(logout())}>Logout</button>
+      <button onClick={() => dispatch(logout())}>Logout</button> */}
     </div>
   );
 }
