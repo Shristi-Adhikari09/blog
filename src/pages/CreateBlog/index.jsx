@@ -1,8 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import {  useEffect, useState } from "react";
 
-import { patchBlog, postBlog, retrieveBlog } from "../../services";
+import { patchBlog, postBlog} from "../../services";
 import { useNavigate, useParams } from "react-router";
+import { retrieveBlog } from "../../store/slice/blog";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/slice/authSlice";
 
 const blogFields = [
   { name: "Title", id: "title", type: "input", inputType: "text" },
@@ -20,28 +22,27 @@ const blogFields = [
 ];
 
 export default function CreateBlog() {
-  const { logout } = useContext(AuthContext);
+  
   const [blogData, setBlogData] = useState({});
   const navigate = useNavigate();
   const{ blogSlug } =useParams();
- 
- 
+  const dispatch =useDispatch();
+  const retrieveBlogData = useSelector(
+    (state) => state.blog.retrieveBlogDetail
+  );
+
+  useEffect(() => {
+    setBlogData(retrieveBlogData);
+  }, [retrieveBlogData]);
+
   useEffect(() => {
    if (!blogSlug) return;
-  (async() => {
-    try{
-        const { result } = await retrieveBlog(blogSlug)
-       
-       setBlogData(result)
-   } catch (err) {
-        console.log("Error retrieving blogs", err)
-   }
-  })();
+  dispatch(retrieveBlog(blogSlug));
   },[blogSlug]);
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
-    logout();
+    dispatch(logout());
   };
 
   const handleBlogFormSubmit = async (e) => {

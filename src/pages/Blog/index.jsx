@@ -8,7 +8,6 @@ import { fetchBlogs } from "../../store/slice/blog";
 export default function Blog()
 {
 
-
   const dispatch= useDispatch();
   const blogStatus= useSelector((state) => state.blog.status)
   const blog = useSelector((state) => state.blog.blogs)

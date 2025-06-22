@@ -4,7 +4,7 @@ import axios from 'axios';
 
  export const loginUser= createAsyncThunk("auth/loginUser",async (payload) => {
   const response = await axios.post("http://localhost:3000/login",payload);
-  
+  console.log("🚀 ~ loginUser ~ response:", response)
   return response.data.result;
 })
 
@@ -27,9 +27,14 @@ const authSlice = createSlice({
           state.status = 'loading';
         })
         .addCase(loginUser.fulfilled, (state, action) => {
-          state.isLoggedIn = true;
-          localStorage.setItem("token",action.payload.token);
-        });
+  state.isLoggedIn = true;
+  if (action.payload?.token) {
+    localStorage.setItem("token", action.payload.token);
+  } else {
+    console.warn("Login succeeded but no token received:", action.payload);
+  }
+})
+
         // .addCase(loginUser.rejected, () => {
         //  //Dislay notification 
         //  console.log("Cannot login user");
