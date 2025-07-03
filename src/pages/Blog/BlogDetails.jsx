@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import BlogDetailsSkeleton from "./BlogDetailsSkeleton";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieveBlog } from "../../store/slice/blog";
+import { retrieveBlog } from "../../store/slice/blogSlice";
 
 
 export default function BlogDetails() {
@@ -42,11 +42,11 @@ export default function BlogDetails() {
           <i className="material-symbols-outlined  ">keyboard_backspace</i>Back to blogs
         </button> <br />
         
-        { retrieveBlogStatus === "rejected" ? (
-      "Error Fetching blog"
-   ) : retrieveBlogStatus === "pending" ? (
-     <BlogDetailsSkeleton />
-   ) : (
+       { retrieveBlogStatus === "rejected" ? (
+  "Error Fetching blog"
+) : retrieveBlogStatus === "pending" ? (
+  <BlogDetailsSkeleton />
+) : blog ? (
   <>
     {blog.featured && (
       <i className="material-symbols-outlined text-sm text-yellow-400">star</i>
@@ -76,7 +76,8 @@ export default function BlogDetails() {
     <p className="text-xl mt-4 italic">{blog.summary}</p>
     <p dangerouslySetInnerHTML={{ __html: blog.body }} className="mt-4"></p>
   </>
-)}
+) : null}
+
 
       {/* <p>{summary}</p> */}
     </div>

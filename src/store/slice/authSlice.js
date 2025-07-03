@@ -1,11 +1,26 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+import {createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
- export const loginUser= createAsyncThunk("auth/loginUser",async (payload) => {
-  const response = await axios.post("http://localhost:3000/login",payload);
-  console.log("🚀 ~ loginUser ~ response:", response)
-  return response.data.result;
+
+//  export const loginUser= createAsyncThunk("auth/loginUser",async (payload) => {
+//   const response = await axios.post("http://localhost:3000/login",payload);
+//   console.log("🚀 ~ loginUser ~ response:", response)
+//   return response.data.result;
+// })
+
+export const authApi =createApi({
+  baseQuery: fetchBaseQuery ({ baseUrl: 'http://localhost:3000/' }),
+  endpoints: (build) => ({
+   loginUser: build.mutation({
+      query: (payload) => ({
+        url: `login`,
+        method: 'POST',
+        body: payload,
+      }),
+     
+  }),
+}),
 })
 
 const authSlice = createSlice({
@@ -21,27 +36,25 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
   },
-    extraReducers: builder => {
-      builder
-        .addCase(loginUser.pending, (state) => {
-          state.status = 'loading';
-        })
-        .addCase(loginUser.fulfilled, (state, action) => {
-  state.isLoggedIn = true;
-  if (action.payload?.token) {
-    localStorage.setItem("token", action.payload.token);
-  } else {
-    console.warn("Login succeeded but no token received:", action.payload);
-  }
-})
-
-        // .addCase(loginUser.rejected, () => {
-        //  //Dislay notification 
-        //  console.log("Cannot login user");
-        // });
-    }
+    // extraReducers: builder => {
+    //   builder
+    //     .addCase(loginUser.pending, (state) => {
+    //       state.status = 'loading';
+    //     })
+    //     .addCase(loginUser.fulfilled, (state, action) => {
+    //         state.isLoggedIn = true;
+    //         localStorage.setItem("token", action.payload.token);
+          
+    //     })
+    //     .addCase(loginUser.rejected, () => {
+    //      //Dislay notification 
+    //      console.log("Cannot login user");
+    //     });
+    // }
 })
 
 export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;
+
+export const {useLoginUserMutation } = authApi
 

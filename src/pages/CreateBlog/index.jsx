@@ -2,7 +2,7 @@ import {  useEffect, useState } from "react";
 
 import { patchBlog, postBlog} from "../../services";
 import { useNavigate, useParams } from "react-router";
-import { retrieveBlog } from "../../store/slice/blog";
+import { retrieveBlog, useGetBlogByNameQuery } from "../../store/slice/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/slice/authSlice";
 
@@ -27,18 +27,33 @@ export default function CreateBlog() {
   const navigate = useNavigate();
   const{ blogSlug } =useParams();
   const dispatch =useDispatch();
-  const retrieveBlogData = useSelector(
-    (state) => state.blog.retrieveBlogDetail
-  );
 
-  useEffect(() => {
-    setBlogData(retrieveBlogData);
+
+  // const retrieveBlogData = useSelector(
+  //   (state) => state.blog.retrieveBlogDetail
+  // );
+
+  // useEffect(() => {
+  //   setBlogData(retrieveBlogData);
+  // }, [retrieveBlogData]);
+
+  //const {isLoading, isError, data} = dispatch(retrieveBlog(blogSlug));
+   const { 
+    isLoading, 
+    isError, 
+    data: retrieveBlogData ,
+  } = useGetBlogByNameQuery(blogSlug);
+
+useEffect(() => {
+    setBlogData(retrieveBlogData?.result || {});
   }, [retrieveBlogData]);
 
-  useEffect(() => {
-   if (!blogSlug) return;
-  dispatch(retrieveBlog(blogSlug));
-  },[blogSlug]);
+
+
+  // useEffect(() => {
+  //  if (!blogSlug) return;
+  // dispatch(retrieveBlog(blogSlug));
+  // },[blogSlug]);
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
@@ -49,7 +64,7 @@ export default function CreateBlog() {
     e.preventDefault();
     if (blogSlug) {
      await patchBlog(blogSlug, blogData);
-     
+     navigate('/user-blog');
    }else{
     await postBlog(blogData);
     navigate('/user-blog');
