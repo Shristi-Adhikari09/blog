@@ -7,6 +7,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import rootReducer from './reducer';
 import { blogApi } from "./slice/blogSlice";
 import { authApi } from './slice/authSlice';
+import { cartApi } from './slice/cartSlice';
 
 const persistConfig ={
     key: 'root',
@@ -29,7 +30,7 @@ export const store = configureStore({
        REGISTER
       ],
     },
-}).concat(blogApi.middleware, authApi.middleware),
+}).concat(blogApi.middleware, authApi.middleware, cartApi.middleware),
 })
 
 export default persistStore(store);

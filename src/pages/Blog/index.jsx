@@ -13,21 +13,14 @@ export default function Blog(){
   const blogStatus = useSelector((state) => state.blog?.status)
   const blog = useSelector((state) => state.blog?.blogs)
   const products = useSelector((state) => state.cart.products);
-  console.log("🚀 ~ Blog ~ products:", products);
   const navigate = useNavigate();
   const  isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
-
-
-
 
   useEffect(() => {
    dispatch(fetchBlogs());
   }, []);
 
-
-
-
-   return (
+ return (
   
    <div className="flex p-4 items-center  flex-col gap-2 relative ">
     <h1 className="text-2xl font-bold font-roboto">Welcome to the blog</h1> 
@@ -43,9 +36,9 @@ export default function Blog(){
             if (!isLoggedIn) {
               navigate (`/login`);
              }
-            //  else {
-            //     dispatch(addToCart(slug ));
-            //  }
+             else {
+             navigate('/cart');
+             }
            }}
            >
            <i className="material-symbols-outlined  bg-gray-100">shopping_cart</i>
